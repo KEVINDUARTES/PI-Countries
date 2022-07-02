@@ -10,19 +10,19 @@ module.exports = (sequelize) => {
       primaryKey: true,
       unique: true,
     },
-    name:{
+    nombre:{
       type: DataTypes.STRING,
      
     },
-    dificulty :{
+    dificultad :{
       type: DataTypes.INTEGER,   //(Entre 1 y 5)
      
     },                                            
-    duration: {
+    duracion: {
       type: DataTypes.INTEGER,
     
     },
-    season:{
+    temporada:{
       type: DataTypes.STRING,    //(Verano, Otoño, Invierno o Primavera)
       
     }, 

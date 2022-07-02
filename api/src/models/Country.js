@@ -9,12 +9,12 @@ module.exports = (sequelize) => {
       allowNull: false, 
     },
     id: {                       // (Código de 3 letras) 
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(3),
       allowNull: false,
       unique: true,
       primaryKey: true,
     },
-    flag: {
+    bandera: {
       type: DataTypes.STRING,
       allowNull: false,
     },
