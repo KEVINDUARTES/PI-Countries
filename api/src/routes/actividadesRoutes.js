@@ -3,44 +3,44 @@ const express = require("express");
 // Ejemplo: const authRouter = require('./auth.js');
 const router = express.Router();
 
-const { Country, Activity } = require("../db.js");
+const { Country, Actividad } = require("../db.js");
 
 router.use(express.json());
 
 router.post("/", async (req, res) => {
   try {
-    const { name, difficulty, duration, season, countries } = req.body;
-    const newActivity = await Activity.create({
-      name: name,
-      difficulty: difficulty,
-      duration: duration,
-      season: season,
+    const { nombre, dificultad, duracion, temporada, countries } = req.body;//ME TRAIGO POR BODY LO QUE NECESITO PARA CREAR
+    const newActivity = await Actividad.create({
+      nambre: nombre,
+      dificultad: dificultad,
+      duracion: duracion,
+      temporada: temporada,
     });
     countries?.map(async (countryId) => {
-      const foundCountry = await Country.findAll({
+      const Countrydb = await Country.findAll({
         where: { name: countryId },
       });
-      newActivity.addCountries(foundCountry);
+      newActivity.addCountries(Countrydb);//aca le agrego(me traigo de la tabla) el paies que coincidio con el nombre.
     });
-    res.status(201).json({ msg: "Activity created correctly" });
+    res.status(201).json({ msg: "Actividad creada correctamente" });
   } catch (e) {
     console.log(e);
     res.status(400).json({
-      error: "CREATE_ACTIVITY_ERROR",
-      description: "Error creating the activity",
+      error: "CREAR_ERROR_DE_ACTIVIDAD",
+      description: "Error al crear la actividad",
     });
   }
 });
 
 router.get("/", async (req, res) => {
   try {
-    const activities = await Activity.findAll({
-      include: { model: Country, attributes: ["id", "name"] },
+    const actividades = await Actividad.findAll({
+      include: { models: Country, atributos: ["id", "nombre"] },
     });
-    res.json(activities);
+    res.json(actividades);
   } catch (e) {
     console.log(" get error " + e);
-    res.json({ error: "There is not an activity created" });
+    res.json({ error: "No hay una actividad creada" });
   }
 });
 

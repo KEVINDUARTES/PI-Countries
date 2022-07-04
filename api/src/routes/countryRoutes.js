@@ -4,7 +4,7 @@ const axios = require("axios");
 // Ejemplo: const authRouter = require('./auth.js');
 const { Country, Activity } = require('../db');
 const router = Router();
-const { getAllCountries } = require("../controllers/CountriesControl/getCountries.js")
+const { getAllCountries } = require("../Controller/getCountries.js")
 
 router.get("/", async (req, res) =>{// cuando selecciono me va filtrar el nombvre que busco , y si no esta me larga un mensaje
     try{
@@ -15,31 +15,23 @@ router.get("/", async (req, res) =>{// cuando selecciono me va filtrar el nombvr
             let countryName = await countriesTotal.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
             countryName.length ?
             res.status(200).send(countryName) ://sino 
-            res.status(404).send("No existent country")
+            res.status(404).send("No existe country")
         } else if(countriesTotal){
             res.status(200).send(countriesTotal)
         }
     }
-    catch(e){res.status(404).send("No existent country")}
+    catch(e){res.status(404).send("No existe country")}
 });
 
 router.get("/:id", async (req, res) => {
-    try {
-        const { id } = req.params;
-        const project = await Country.findByPk(id.toUpperCase(), {
-            include:{ 
-                model: Activity,
-                attributes:["name", "difficulty", "duration", "season"],
-                through: {
-                    attributes: [],
-                }
-            }
-        });
-            project ?
-            res.status(200).json(project) :
-            res.status(404).send("nonexistent country")
-    }
-    catch (e) {res.status(404).send("nonexistent country")}
-});
+    const id = req.params.id;//me traigo id de params
+    const countriesTotal = await getAllCountries()
+    if(id){
+        let countryId = await countriesTotal.filter(el => el.id ==id)//dentro de todos los pñaises filtrame el de id que te pase
+        countryId.length?
+        res.status(200).json(countryId) :
+        res.status(404).send('No encontre ese pais')
+}
+})
 
 module.exports = router;
