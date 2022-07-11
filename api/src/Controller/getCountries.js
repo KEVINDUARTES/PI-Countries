@@ -8,13 +8,13 @@ const getApiInfo = async () => {
 const apiInfo= await apiUrl.data.map(el =>{
     return{
         id: el.cca3,
-        nombre: el.nombre,
-        bandera: el.bandra ,
-        continente: el.continente,
+        name: el.name,
+        flag: el.flag [1],
+        continents: el.continents[0],
         capital: el.capital ? el.capital[0] : 'Capital no encontrada',
         subregion: el.subregion ? el.subregion : 'Subregion no encontrado',
         area: el.area,
-        poblacion: el.poblacion,
+        population: el.population,
     };
 });
 
@@ -25,7 +25,7 @@ const getDbInfo = async () => {
     return await Country.findAll({
         include: {
             model: Activity,
-            atributos: ["nombre", "dificultad", "duracion", "temporada"],
+            attributes: ["name", "difficulty", "duration", "season"],
             through: {
                 atributos: [],
             },
