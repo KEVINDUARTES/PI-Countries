@@ -3,18 +3,18 @@ const express = require("express");
 // Ejemplo: const authRouter = require('./auth.js');
 const router = express.Router();
 
-const { Country, Actividad } = require("../db.js");
+const { Country, Activity } = require("../db.js");
 
 router.use(express.json());
 
 router.post("/", async (req, res) => {
   try {
-    const { nombre, dificultad, duracion, temporada, countries } = req.body;//ME TRAIGO POR BODY LO QUE NECESITO PARA CREAR
-    const newActivity = await Actividad.create({
-      nambre: nombre,
-      dificultad: dificultad,
-      duracion: duracion,
-      temporada: temporada,
+    const { name, difficulty, duration, season, countries } = req.body;//ME TRAIGO POR BODY LO QUE NECESITO PARA CREAR
+    const newActivity = await Activity.create({
+      name: name,
+      difficulty: difficulty,
+      duration: duration,
+      season: season,
     });
     countries?.map(async (countryId) => {
       const Countrydb = await Country.findAll({
@@ -35,9 +35,9 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const actividades = await Actividad.findAll({
-      include: { models: Country, atributos: ["id", "nombre"] },
+      include: { models: Country, attributes: ["id", "name"] },
     });
-    res.json(actividades);
+    res.json(activities);
   } catch (e) {
     console.log(" get error " + e);
     res.json({ error: "No hay una actividad creada" });

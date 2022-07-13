@@ -14,11 +14,11 @@ module.exports = (sequelize) => {
       unique: true,
       primaryKey: true,
     },
-    bandera: {
+    flag: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    continente: {
+    continents: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -32,7 +32,7 @@ module.exports = (sequelize) => {
     area: {
       type: DataTypes.INTEGER,
     },
-    poblacion: {
+    population: {
       type: DataTypes.INTEGER,  
     },
   })
