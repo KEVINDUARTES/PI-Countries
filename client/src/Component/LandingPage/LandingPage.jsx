@@ -1,6 +1,7 @@
 import React from "react";
 import  './LandingPage.module.css'
 import {Link} from "react-router-dom";
+//import  "../../image/mundo.png";
 
 
 function LandingPage() {

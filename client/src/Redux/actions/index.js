@@ -56,7 +56,7 @@ export function getNameCountries(name) {
         let json = await axios.get("http://localhost:3001/countries?name=" + name)
         return dispatch({
           type: SEARCH_COUNTRIES,
-          payload: json.data
+          payload: json.data//me devuleve el name que trae esta ruta 
         });
   }
 }

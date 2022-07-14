@@ -11,7 +11,7 @@ import SearchBar from "../SearchBar/SearchBar.jsx";
 export default function Home() {
     const dispatch = useDispatch();
     const countries = useSelector((state) => state.countries) //es lo mismo que hacer el mapStateToProps
-    const [, setOrder] = useState("");
+    const [, setOrder] = useState("");//me modifica el estado local y lo renderiza
 
     //PAGINADO
     //aca hicimos que guarde en un estado local la pagina actual, comienza en 1 por que siempre voy a arrancar de la primer pagina

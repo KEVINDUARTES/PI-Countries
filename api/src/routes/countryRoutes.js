@@ -6,11 +6,13 @@ const { Country, Activity } = require('../db');
 const router = Router();
 const { getAllCountries } = require("../Controller/getCountries.js")
 
-router.get("/", async (req, res) =>{// cuando selecciono me va filtrar el nombvre que busco , y si no esta me larga un mensaje
+router.get("/", async (req, res) =>{// cuando selecciono me va filtrar el nombre que busco , y si no esta me larga un mensaje
     try{
    const {name} = req.query;//req busca si hay un name por query
+   console.log('nombredequeri', name)
        let countriesTotal = await getAllCountries();
-        if (name){//si hay un nombre que me pasa por query hjago esto  
+       console.log("rutaspaises",countriesTotal)
+        if (name!=undefined){//si hay un nombre que me pasa por query hjago esto  
                                  //llamo la funcion de arribba que me trae todos los country
             let countryName = await countriesTotal.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
             countryName.length ?
@@ -20,7 +22,7 @@ router.get("/", async (req, res) =>{// cuando selecciono me va filtrar el nombvr
             res.status(200).send(countriesTotal)
         }
     }
-    catch(e){res.status(404).send("No existe country")}
+    catch(e){res.status(404).send("acaaaaaaa")}
 });
 
 router.get("/:id", async (req, res) => {

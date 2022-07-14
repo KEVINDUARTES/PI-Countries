@@ -1,10 +1,10 @@
 const axios = require ('axios');
-const {Country, Activity }= require('../../db');
+const {Country, Activity }= require('../db');
 const {URL_COUNTRIES}=process.env
 
 const getApiInfo = async () => {
     const apiUrl = await axios.get(URL_COUNTRIES);
- console.log("api-Url", apiUrl);
+ console.log("api-Url", apiUrl.data);
 const apiInfo= await apiUrl.data.map(el =>{
     return{
         id: el.cca3,
@@ -17,7 +17,7 @@ const apiInfo= await apiUrl.data.map(el =>{
         population: el.population,
     };
 });
-
+console.log("infoAPI", apiInfo)
 return apiInfo;//retorno la info que le pedi
 
 };
@@ -32,7 +32,7 @@ const getDbInfo = async () => {
         },
     })
 }
-
+//console.log("infoDB", getApiInfo)
 
 
 const getAllCountries = async () => {

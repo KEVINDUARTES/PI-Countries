@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail} from "../../redux/Actions";
+import { getDetail} from "../../redux/Actions";//me traigo la ruta del id
 import {Link} from"react-router-dom";
 
 
@@ -8,10 +8,10 @@ export default function Details(props) {
     const dispatch = useDispatch()
     
     useEffect(() => {
-        dispatch(getDetail(props.match.params.id))
+        dispatch(getDetail(props.match.params.id))//despacho el id
     }, [dispatch, props.match.params.id])
 
-    const countriesDetail = useSelector((state) => state.details)
+    const countriesDetail = useSelector((state) => state.details)//me lo traigo del reducer
 
     return (
             <div >{

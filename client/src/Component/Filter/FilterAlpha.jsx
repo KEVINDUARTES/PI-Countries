@@ -9,7 +9,7 @@ export default function alphaOrder({setOrder}) {
   function handleSort(e) {
     e.preventDefault();
     dispatch(orderAlpha(e.target.value));
-    setOrder(`Ordenado ${e.target.value}`);
+    setOrder(`Ordenado ${e.target.value}`);//me modifica el estado local y lo renderiza
   }
         //para lo unico que lo vamos a usar es que cuando yo setea la pagina de arriba
         //modifique el estado local y se renderiza.
