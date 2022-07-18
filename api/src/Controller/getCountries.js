@@ -4,12 +4,12 @@ const { URL_COUNTRIES } = process.env;
 
 const getApiInfo = async () => {
   const apiUrl = await axios.get(URL_COUNTRIES);
-  console.log("api-Url", apiUrl);
+  // console.log("api-Url", apiUrl);
   const apiInfo = await apiUrl.data.map((el) => {
     return {
       id: el.cca3,
-      name: el.name,
-      flag: el.flag[1],
+      name: el.name.common,
+      flag: el.flags[1],
       continents: el.continents[0],
       capital: el.capital ? el.capital[0] : "Capital no encontrada",
       subregion: el.subregion ? el.subregion : "Subregion no encontrado",
