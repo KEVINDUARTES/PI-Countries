@@ -12,7 +12,7 @@ function Card({id,name,flag,nombre,subregion,continents,capital,area,population,
                 <div className="infoCard">
                     <h1 className="titulo">{name}</h1>
                     <p className="otroTitulo">{nombre}</p>
-                    <p className="continentes">{continents}</p>
+                    <p className="continents">{continents}</p>
                     <p className="population">{population}</p>
                     <p className="capital">{capital}</p>
                     <p className="subregion">{subregion}</p>
