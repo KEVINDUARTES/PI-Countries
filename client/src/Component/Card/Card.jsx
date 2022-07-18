@@ -1,17 +1,34 @@
 import React from "react";
-import './Card.module.css'
+import { Link } from "react-router-dom";
+import "./card.css"
 
-//va a renderizar lo que yo preciso
-function Card({ name, flag, continents, population, activities}) {
-    return(
-        <div>
-            <h3>{name}</h3>
-            <img src={flag} alt="Img not Found" />
-            <h4>{continents}</h4>
-            <h4>{population}</h4>
-            <h4>{activities}</h4>
+function Card({id,name,flag,nombre,subregion,continents,capital,area,population,activities}){
+    return (
+    <Link className="LinkD" to={`/countries/${id}`} >
+        <div className="card">    
+            <div key={id}>
+                <img src={flag} alt="img not found" className="flagImgen"/>
+                {/* <img src={image} alt="img not found" className="MapImage"/> */ }
+                <div className="infoCard">
+                    <h1 className="titulo">{name}</h1>
+                    <p className="otroTitulo">{nombre}</p>
+                    <p className="continentes">{continents}</p>
+                    <p className="population">{population}</p>
+                    <p className="capital">{capital}</p>
+                    <p className="subregion">{subregion}</p>
+                    <p className="area">{area}</p>
+                    <ul>
+                    {activities?.map(activity => {
+                            return(
+                                <li key={activity.id}>Actividades: {activity.nombre}</li>
+                                )
+                            })}
+                    </ul>
+                </div>
+            </div>
         </div>
+    </Link>
+    
     )
-
 }
-export default Card;
+export default Card

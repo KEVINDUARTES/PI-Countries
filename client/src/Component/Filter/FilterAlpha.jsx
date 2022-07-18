@@ -2,7 +2,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { orderAlpha } from "../../redux/Actions/index.js";
-
+import "./Filter.css"
 export default function alphaOrder({setOrder}) {
     const dispatch = useDispatch();
 

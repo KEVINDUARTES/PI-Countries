@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import  LandingPage from './Component/LandingPage/LandingPage';
+import  LandingPage from './Component/LandingPages/LandingPage';
 import Home from './Component/Home/Home.jsx';
 import CreateActivity from './Component/CreateActivity/CreateActivity.jsx';
 import Details from './Component/Details/Details.jsx';
@@ -16,6 +16,7 @@ function App() {
           <Route path="/home" component={Home} />
           <Route path="/activity" component={CreateActivity} />
           <Route path="/home/:id" component={Details}/>
+        
         </Switch>
       </div>
     </BrowserRouter>

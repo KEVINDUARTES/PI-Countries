@@ -4,7 +4,7 @@ const { URL_COUNTRIES } = process.env;
 
 const getApiInfo = async () => {
   const apiUrl = await axios.get(URL_COUNTRIES);
-  // console.log("api-Url", apiUrl);
+  console.log("api-Url", apiUrl.data);
   const apiInfo = await apiUrl.data.map((el) => {
     return {
       id: el.cca3,
@@ -17,6 +17,8 @@ const getApiInfo = async () => {
       population: el.population,
     };
   });
+  console.log("infoAPI", apiInfo);
+  return apiInfo; //retorno la info que le pedi
 
   return apiInfo; //retorno la info que le pedi
 };
@@ -31,6 +33,7 @@ const getDbInfo = async () => {
     },
   });
 };
+//console.log("infoDB", getApiInfo)
 
 const getAllCountries = async () => {
   const apiInfo = await getApiInfo();
@@ -38,7 +41,9 @@ const getAllCountries = async () => {
   const infoTotal = apiInfo.concat(dbInfo);
   return infoTotal;
 };
-
 module.exports = {
   getAllCountries,
+  // getDbInfo,
+  //getApiInfo,
+  //getActivity
 };

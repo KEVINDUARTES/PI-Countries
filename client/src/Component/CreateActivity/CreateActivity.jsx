@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getActivities, getAllCountries, postActivities } from "../../redux/Actions";
-
+import './CreateActivity.css';
 //El useHistory es un metodo del router que lo que hace es redirijirme a la ruta q yo le diga
 
 function error(input) {
@@ -93,7 +93,7 @@ export default function Createactivity() {
                 <div>
                     <label>Name:</label>
                     <input type="text" value={input.name} name="name" onChange={(e) => handleChange(e)} />
-                    {errors.name && <p className='form-error'>{errors.name}</p>}
+                    {errors.name && <p className='form-error'>{errors.name}</p>};
                 </div>
                 <div>
                     <label>Difficulty:</label>

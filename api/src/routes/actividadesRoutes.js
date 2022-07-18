@@ -10,6 +10,7 @@ router.use(express.json());
 router.post("/", async (req, res) => {
   try {
     const { name, difficulty, duration, season, countries } = req.body;//ME TRAIGO POR BODY LO QUE NECESITO PARA CREAR
+
     const newActivity = await Activity.create({
       name: name,
       difficulty: difficulty,
@@ -34,10 +35,9 @@ router.post("/", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const actividades = await Actividad.findAll({
-      include: { models: Country, attributes: ["id", "name"] },
-    });
-    res.json(activities);
+    const actividades = await Activity.findAll();
+ 
+    res.json(actividades);
   } catch (e) {
     console.log(" get error " + e);
     res.json({ error: "No hay una actividad creada" });

@@ -1,13 +1,25 @@
-body {
+
+body{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background);
+  height: 100vh;
+  background:url("https://img.freepik.com/vector-premium/globo-hecho-banderas-sobre-fondo-mapa-mundo_259139-1414.jpg?w=2000");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --background: #fff;
+  --container-primary: #ffffff;
+  --container: #252222;
+  --border: #2A3B47;
+  --text-secondary: #FF3B3F;
+  --main: #838383;
+  --text-primary: #000;
+  --accent: #52A5E0;
+  --shadow: rgba(15, 15, 15, 0.404);
+  --contrast: #06314cca;
+  --contrastV2: #372838b7;
 }

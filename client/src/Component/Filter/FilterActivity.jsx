@@ -1,11 +1,11 @@
 import React, { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterCountriesByActivity, getActivities } from "../../redux/Actions";
-
+import "./Filter.css"
 const activitiesOrder = ({ setCurrentPage }) => {
-    
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const dispatch = useDispatch();
-    
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const allActivities = useSelector(state => state.activities);
 
     function handleActivity(e) {
@@ -13,7 +13,7 @@ const activitiesOrder = ({ setCurrentPage }) => {
         dispatch(filterCountriesByActivity(e.target.value));
         setCurrentPage(1);
     }
-    
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
         dispatch(getActivities())
     },[dispatch])
@@ -36,3 +36,6 @@ const activitiesOrder = ({ setCurrentPage }) => {
 }
 
 export default activitiesOrder;
+
+
+
