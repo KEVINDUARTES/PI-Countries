@@ -16,7 +16,7 @@ export const RESET = "RESET";
 
 export function getAllCountries() {
     return async function (dispatch) {
-        var json = await axios.get('http://localhost:3001/countries') //aca se hace la conexion con el backend!!
+        var json = await axios.get('http://localhost:3001/country') //aca se hace la conexion con el backend!!
         return dispatch({
             type: GET_COUNTRIES,
             payload: json.data
@@ -29,7 +29,7 @@ export function getAllCountries() {
 export function getDetail(id) {
     return async function (dispatch) {
         try {
-            var json = await axios.get(`http://localhost:3001/countries/${id}`)
+            var json = await axios.get(`http://localhost:3001/country/${id}`)
             return dispatch({
                 type: GET_DETAIL,
                 payload: json.data
@@ -53,17 +53,17 @@ export function restartDetail() {
 
 export function getNameCountries(name) {
     return async function (dispatch) {
-        let json = await axios.get("http://localhost:3001/countries?name=" + name)
+        let json = await axios.get("http://localhost:3001/country?name=" + name)
         return dispatch({
           type: SEARCH_COUNTRIES,
-          payload: json.data//me devuleve el name que trae esta ruta 
+          payload: json.data
         });
   }
 }
 
 //filtrar los paises por continentes
 
-export function filterCountriesByContinent(payload) {//payload es el value de la opcion que yo eleija
+export function filterCountriesByContinent(payload) {
     return ({
         type: FILTER_BY_CONTINENT,
         payload

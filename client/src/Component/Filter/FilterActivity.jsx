@@ -1,7 +1,7 @@
 import React, { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterCountriesByActivity, getActivities } from "../../redux/Actions";
-
+import "./Filter.css"
 const activitiesOrder = ({ setCurrentPage }) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const dispatch = useDispatch();
@@ -36,3 +36,6 @@ const activitiesOrder = ({ setCurrentPage }) => {
 }
 
 export default activitiesOrder;
+
+
+

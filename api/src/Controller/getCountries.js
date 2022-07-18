@@ -8,8 +8,8 @@ const getApiInfo = async () => {
 const apiInfo= await apiUrl.data.map(el =>{
     return{
         id: el.cca3,
-        name: el.name,
-        flag: el.flag [1],
+        name: el.name.common,
+        flag: el.flags [1],
         continents: el.continents[0],
         capital: el.capital ? el.capital[0] : 'Capital no encontrada',
         subregion: el.subregion ? el.subregion : 'Subregion no encontrado',
@@ -40,8 +40,11 @@ const getAllCountries = async () => {
     const dbInfo = await getDbInfo();
     const infoTotal = apiInfo.concat(dbInfo);
     return infoTotal
+ 
  }
-
  module.exports={
     getAllCountries,
+   // getDbInfo,
+   //getApiInfo,
+   //getActivity
  }

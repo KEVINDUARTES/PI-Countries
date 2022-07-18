@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { orderPopulation} from "../../redux/Actions/index.js";
-
+import "./Filter.css"
 export default function FilterPopulation({setOrder}) {
   const dispatch = useDispatch();
 

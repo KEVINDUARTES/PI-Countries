@@ -5,7 +5,7 @@ import FilterOrder from "../Filter/FilterContinent";
 import FilterAlpha from "../Filter/FilterAlpha";
 import FilterActivity from "../Filter/FilterActivity";
 import FilterPopulation from "../Filter/FilterPopulation.jsx";
-
+import './NavBar';
 const NavBar = ({ setCurrentPage, setOrder }) => {
   const dispatch = useDispatch();
 

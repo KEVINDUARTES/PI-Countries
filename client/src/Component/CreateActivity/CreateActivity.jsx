@@ -3,10 +3,10 @@ import { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getActivities, getAllCountries, postActivities } from "../../redux/Actions";
-
+import './CreateActivity.css';
 //El useHistory es un metodo del router que lo que hace es redirijirme a la ruta q yo le diga
 
-function error(input) {//1 VALIDACIONES
+function error(input) {
     let errors = {};
     if (!input.name) {
         errors.name = "Debe completar este campo";
@@ -22,12 +22,12 @@ function error(input) {//1 VALIDACIONES
     return errors;
 }
 export default function Createactivity() {
-    const dispatch = useDispatch();//
+    const dispatch = useDispatch();
     const history = useHistory();
-    const countries = useSelector((state) => state.allCountries);//me traigo este estado del reducer
-    const [errors, setErrors] = useState({});//2 me genero este estado local
+    const countries = useSelector((state) => state.allCountries);
+    const [errors, setErrors] = useState({});
 
-    const [input, setInput] = useState({//le paso los datos que necesita el post para crear la actividad
+    const [input, setInput] = useState({
         name: "",
         difficulty: "",
         duration: "",
@@ -36,13 +36,13 @@ export default function Createactivity() {
     })
 
     function handleChange(e) {
-        setInput({//aca con la info que me va llegando(con la que escribe el cliente) voy llenando los string input(los de arriba)
+        setInput({
             ...input,
             [e.target.name]: e.target.value
         });
-        setErrors(//3. le paso la funcion error que hice al principio
+        setErrors(
             error({
-                ...input,//hago una copia del input de arriba 
+                ...input,
                 [e.target.name]: e.target.value,
             })
         );
@@ -50,12 +50,12 @@ export default function Createactivity() {
     };
 
     useEffect(() => {
-        dispatch(getActivities());//al estar montado lo despacha
+        dispatch(getActivities());
         dispatch(getAllCountries());
     }, [dispatch]);
 
 
-    function handleSelect(e) {//traigo el evento de habdle select y le concateno lo nuevo
+    function handleSelect(e) {
         setInput({
             ...input,
             countryId: [...input.countryId, e.target.value]
@@ -70,7 +70,7 @@ export default function Createactivity() {
             input.countryId.length === 0) return alert('Debe llenar los campos');
         dispatch(postActivities(input));
         alert("Actividad Creada");
-        setInput({//le seteo los nuevos valores al input
+        setInput({
             name: "",
             duration: "",
             difficulty: "",
@@ -79,13 +79,13 @@ export default function Createactivity() {
         });
         history.push("/home");
     }
-    function handleDelete(i) {//resive el evento de abajo
+    function handleDelete(i) {
         setInput({
           ...input,
           countryId: input.countryId.filter((el) => el !== i),
         });
       }
-//4 .en errors renderizo la primer funcion de error
+
     return (
         <div>
             <h1>Crea tu Actividad</h1>
@@ -93,8 +93,7 @@ export default function Createactivity() {
                 <div>
                     <label>Name:</label>
                     <input type="text" value={input.name} name="name" onChange={(e) => handleChange(e)} />
-                    {errors.name && <p className='form-error'>{errors.name}</p>}
-
+                    {errors.name && <p className='form-error'>{errors.name}</p>};
                 </div>
                 <div>
                     <label>Difficulty:</label>

@@ -1,17 +1,17 @@
-
+/* eslint-disable react-hooks/rules-of-hooks */
 import React from "react";
 import { useDispatch} from "react-redux";
 import { filterCountriesByContinent } from "../../redux/Actions/index.js";
-
+import "./Filter.css"
 const continentsOrder = ({ setCurrentPage }) => {
-    
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const dispatch = useDispatch();
-    
+    // eslint-disable-next-line react-hooks/rules-of-hooks
 
     function handleContinent(e) {
         e.preventDefault();
-        dispatch(filterCountriesByContinent(e.target.value));//despacho al navegador
-        setCurrentPage(1);//                aca le paso el valor que se va a filtrar
+        dispatch(filterCountriesByContinent(e.target.value));
+        setCurrentPage(1);
     }
     return (
         <div>

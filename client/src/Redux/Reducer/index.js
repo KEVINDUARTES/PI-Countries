@@ -52,8 +52,8 @@ const rootReducer = (state = initialState, action) => {
         case FILTER_BY_CONTINENT:
             const allCountries = state.allCountries;
             const continentFilter =
-                action.payload === "All" //payload es los valores que estan en filterContinent
-                    ? allCountries//si es asi devolveme allCountries sino hace un filter de allcountries
+                action.payload === "All"
+                    ? allCountries
                     : allCountries.filter(
                         (country) => country.continents === action.payload
                     );
@@ -87,7 +87,7 @@ const rootReducer = (state = initialState, action) => {
                     }
                     return 0;
                 }) :
-                state.countries.sort(function (a, b) {//el sort ordena los elementos dentro del array
+                state.countries.sort(function (a, b) {
                     if (a.name > b.name) {
                         return -1;
                     }
