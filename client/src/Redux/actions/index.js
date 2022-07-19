@@ -16,7 +16,7 @@ export const RESET = "RESET";
 
 export function getAllCountries() {
     return async function (dispatch) {
-        var json = await axios.get('http://localhost:3001/country') //aca se hace la conexion con el backend!!
+        var json = await axios.get('http://localhost:3001/countries') //aca se hace la conexion con el backend!!
         return dispatch({
             type: GET_COUNTRIES,
             payload: json.data
@@ -27,9 +27,11 @@ export function getAllCountries() {
 // //TRAER PAISES POR ID
 
 export function getDetail(id) {
+    console.log(id)
     return async function (dispatch) {
         try {
-            var json = await axios.get(`http://localhost:3001/country/${id}`)
+            var json = await axios.get(`http://localhost:3001/countries/${id}`)
+            console.log(json.data)
             return dispatch({
                 type: GET_DETAIL,
                 payload: json.data
@@ -53,7 +55,7 @@ export function restartDetail() {
 
 export function getNameCountries(name) {
     return async function (dispatch) {
-        let json = await axios.get("http://localhost:3001/country?name=" + name)
+        let json = await axios.get("http://localhost:3001/countries?name=" + name)
         return dispatch({
           type: SEARCH_COUNTRIES,
           payload: json.data

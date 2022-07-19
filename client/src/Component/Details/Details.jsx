@@ -1,82 +1,40 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail} from "../../redux/Actions";
-import { useParams, Link} from"react-router-dom";
-import './Details.css';
+import {Link} from"react-router-dom";
+import './Details.css'
 
- function Details() {
-    const dis = useDispatch()
-    const countryID= useSelector(state=> state.countryID)
-   // const countriesDetail = useSelector((state) => state.details)
-    let {name,Nombre,Flag,Continent,Capital,SubRegion,Area,Poblacion,activities}=countryID
-    let {id}=useParams()
-    useEffect(()=>{
-        dis(getDetail(id))
-    },[dis,id])
-  
-
-   
+export default function Details(props) {
+    const dispatch = useDispatch()
     
-    return(
-        <div className="details">
-            <div className="detailCard" key={id}>
-            <div className="columns">
-                    <div className="columnLeft">
-                        
-                    <div className="countryInfo">
-                    <img className="detailImg" src={Flag} alt={name} />                    
-                    </div>
-                    <div className="countryInfo">
-                        <h1>Pais:</h1>
-                        <h1 className="detailTitle">{Nombre}</h1>                        
-                    </div>
-                    <div className="countryInfo">
-                        <h3>Capital:</h3>
-                        <h3 className="detailCapital">{Capital}</h3>                      
-                    </div>
-                    <div className="countryInfo">
-                        <h3>Continente:</h3>
-                        <h3 className="detailContinent">{Continent}</h3>                       
-                    </div>
-                    <div className="countryInfo">
-                        <h3>Subregion:</h3>
-                        <h3 className="detailSubregion">{SubRegion}</h3>                       
-                    </div>
-                    <div className="countryInfo">
-                        <h3>Area:</h3>
-                        <h3 className="detailArea">{Area}</h3>   
-                    </div>
-                    <div className="countryInfo">
-                        <h3>Poblacion:</h3>
-                        <h3 className="detailPopulation">{Poblacion}</h3>        
-                    </div>
-                    </div>
-                    <div className="columnRight">
+    useEffect(() => {
+        dispatch(getDetail(props.match.params.id))
+    }, [dispatch, props.match.params.id])
 
-                        <h2 className="activitiesTitle">Actividades:</h2>
-                    <div className="countryInfo">
-                        <div className="detailActivities">
+    const countriesDetail = useSelector((state) => state.details)
 
-                        {activities && activities.map(activites => {
-                            return(
-                                <h2  key={activites.id}>
-                                Nombre:{activites.nombre} <br/> 
-                                Dificultad:{activites.Dificultad}<br/>
-                                Temporada:{activites.Temporada}<br/>
-                                Duracion:{activites.Duracion}</h2>        
-                                )
-                            })}
-                            
-                        </div>  
-                        {/* <button onClick={e=>handleClick(e)}>prueba</button> */}
+    return (
+            <div >{
+                countriesDetail.length > 0 ?
+                    <div >
+                        <img src={countriesDetail[0].flag} alt='Imagen no encontrada' width='250px' height='175px' />
+                        <h1 >{countriesDetail[0].name}</h1>
+                        <div>
+                            <h2>Id: {countriesDetail[0].id}</h2>
+                            <h2>Capital: {countriesDetail[0].capital}</h2>
+                            <h2>Continente: {countriesDetail[0].continent}</h2>
+                            <h2>Subregion: {countriesDetail[0].subregion}</h2>
+                            <h2>Area: {countriesDetail[0].area} km2</h2>
+                            <h2>Poblacion: {countriesDetail[0].population}</h2>
+                        </div>
+                    </div> :
+                    <div className='loading'>
+                        <p> Loading... </p>
                     </div>
-                    </div>
-                </div>
-                <Link className="Link" to={`/home`}>
-                            <button className="HomeBT"  >home</button>
-                        </Link> 
-            </div>
-        </div>
-    )
-}
-export default Details
+
+            }
+            <Link to='/home'>VOLVER
+            </Link></div>
+
+    );
+};

@@ -13,7 +13,7 @@ function Cards({countries}){
                     id={countries.id} 
                     name={countries.name}
                     nombre={countries.Nombre}
-                    flag={countries.Flag}
+                    flag={countries.flag}
                     continent={countries.Continent}
                     activities={countries.activities}
                     />

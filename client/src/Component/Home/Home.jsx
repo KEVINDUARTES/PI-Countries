@@ -52,12 +52,13 @@ export default function Home() {
                 paginado={paginado} />
             <SearchBar setCurrentPage={setCurrentPage} />
 
-            {currentCountries && currentCountries.map(country => {
                 return (<div className="Cards">
-                <Cards countries={currentCountries}/>
+                
+                <Cards countries={currentCountries}/> 
             </div>
+            
                 )
-            })}
+            
         </div>
 
     )
