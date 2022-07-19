@@ -25,6 +25,7 @@ export function getAllCountries() {
 // //TRAER PAISES POR ID
 
 export function getDetail(id) {
+  console.log(id);
   return async function (dispatch) {
     try {
       var json = await axios.get(`http://localhost:3001/countries/${id}`);

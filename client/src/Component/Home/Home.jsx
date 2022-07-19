@@ -53,6 +53,7 @@ export default function Home() {
                 countries={countries.length} //241
                 paginado={paginado} /> //pasar parametro
             <SearchBar setCurrentPage={setCurrentPage} />
+<<<<<<< HEAD
            
           
             
@@ -64,6 +65,16 @@ export default function Home() {
                 {/* <Cards countries={currentCountries}/> */}
            
            
+=======
+
+                return (<div className="Cards">
+                
+                <Cards countries={currentCountries}/> 
+            </div>
+            
+                )
+            
+>>>>>>> bb3b608d7d27847cca40e343ec5996ee8f77ea0b
         </div>
 
     )
