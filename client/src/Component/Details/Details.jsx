@@ -5,14 +5,15 @@ import { useParams, Link} from"react-router-dom";
 import './Details.css';
 
  function Details() {
-    const dis = useDispatch()
-    const countryID= useSelector(state=> state.countryID)
+    const dispatch = useDispatch()
+    const details= useSelector(state=> state.details)
    // const countriesDetail = useSelector((state) => state.details)
-    let {name,Nombre,Flag,Continent,Capital,SubRegion,Area,Poblacion,activities}=countryID
+    let {name,flag,continents,capital,SubRegion,Area,Poblacion,activities}=details[0]
     let {id}=useParams()
     useEffect(()=>{
-        dis(getDetail(id))
-    },[dis,id])
+        console.log("id",id)
+        dispatch(getDetail(id))
+    },[])
   
 
    
@@ -24,19 +25,19 @@ import './Details.css';
                     <div className="columnLeft">
                         
                     <div className="countryInfo">
-                    <img className="detailImg" src={Flag} alt={name} />                    
+                    <img className="detailImg" src={flag} alt={name} />                    
                     </div>
                     <div className="countryInfo">
                         <h1>Pais:</h1>
-                        <h1 className="detailTitle">{Nombre}</h1>                        
+                        <h1 className="detailTitle">{name}</h1>                        
                     </div>
                     <div className="countryInfo">
                         <h3>Capital:</h3>
-                        <h3 className="detailCapital">{Capital}</h3>                      
+                        <h3 className="detailCapital">{capital}</h3>                      
                     </div>
                     <div className="countryInfo">
                         <h3>Continente:</h3>
-                        <h3 className="detailContinent">{Continent}</h3>                       
+                        <h3 className="detailContinent">{continents}</h3>                       
                     </div>
                     <div className="countryInfo">
                         <h3>Subregion:</h3>

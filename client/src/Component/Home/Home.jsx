@@ -19,25 +19,27 @@ export default function Home() {
     const [countriesPerPage,] = useState(9); //paises por pagina que siempre van a ser 9
     //hacemos otra constante que se llama el indice del ultimo pais, y esto es la igual
     //a la pagina actual en la que estoy por la cantidad de personajes por pagina
-    const indexOfLastCountry = currentPage * countriesPerPage;
+    const indexOfLastCountry = currentPage * countriesPerPage; 
     //hacemos otra constante que se llama el indice del primer pais, y esto es la igual
     //al indice del ultimo personaje(la constante que creamos arriba) 
     //menos la cantidad de personajes por pagina
-    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage; 
     //luego realizamos otra constante que nos va a traer los personajes que estan en la pagina actual
     //el slice divide un array, y toma una porcion dependediendo de lo que nosotros pasemos por parametro
     const currentCountries = countries && countries.slice(indexOfFirstCountry, indexOfLastCountry);
-
+                                                            
     //cremos una constante que se llame paginado que le pasamos un numero de la pagina
     // y vamos a setear la pagina en ese numero de pagina
     const paginado = (pageNumber) => {
+    
         setCurrentPage(pageNumber)
     }
 
 
 
     useEffect(() => {
-        dispatch(getAllCountries()) //es lo mismo que hacer el mapDispatchToProps
+        dispatch(getAllCountries())
+        console.log("ESTOY VIGILANDO") //es lo mismo que hacer el mapDispatchToProps
     }, [dispatch])
 
     //El value en option lo que hace es que me permite acceder a incrementar (en este caso) o descrementar despues!
@@ -47,17 +49,21 @@ export default function Home() {
             <h1>Countries</h1>
             <NavBar setCurrentPage={setCurrentPage} setOrder={setOrder} />
             <Paginado
-                countriesPerPage={countriesPerPage}
-                countries={countries.length}
-                paginado={paginado} />
+                countriesPerPage={countriesPerPage} //9
+                countries={countries.length} //241
+                paginado={paginado} /> //pasar parametro
             <SearchBar setCurrentPage={setCurrentPage} />
-
-            {currentCountries && currentCountries.map(country => {
-                return (<div className="Cards">
+           
+          
+            
+        
                 <Cards countries={currentCountries}/>
-            </div>
-                )
-            })}
+   
+        
+       
+                {/* <Cards countries={currentCountries}/> */}
+           
+           
         </div>
 
     )

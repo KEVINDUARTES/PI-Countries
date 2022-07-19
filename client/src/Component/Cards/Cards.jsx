@@ -5,15 +5,15 @@ function Cards({countries}){
    // console.log(countryPG[0])
     return (
         <div className="cards">
-            
+        
             {countries && countries.map((countries)=>{
                 return(
                     <Card
                     key={countries.id} 
                     id={countries.id} 
                     name={countries.name}
-                    nombre={countries.Nombre}
-                    flag={countries.Flag}
+                   
+                    flag={countries.flag}
                     continent={countries.Continent}
                     activities={countries.activities}
                     />
