@@ -48,18 +48,24 @@ export default function Home() {
             <Link to='/activity' >Crear Actividad</Link>
             <h1>Countries</h1>
             <NavBar setCurrentPage={setCurrentPage} setOrder={setOrder} />
-            <Paginado
+            {countries.length>0 ? 
+   
+
+                 <div className="Cards">
+                              <Paginado
                 countriesPerPage={countriesPerPage}//9
                 countries={countries.length}//249       //le paso la funcion paginado que esta esperando un numero
                 paginado={paginado} />
-            <SearchBar setCurrentPage={setCurrentPage} />
-
-                return (<div className="Cards">
-                
+        
+                    <SearchBar setCurrentPage={setCurrentPage} />
                 <Cards countries={currentCountries}/> 
-                </div>  {/* aca llegan 9 countries en la primr pagina y se lo pasa a las cards                 */}
+                </div>  
             
-                )
+                : <div className='loading'>
+                <p> Loading... </p>
+            </div>
+            }
+           
             
         </div>
 

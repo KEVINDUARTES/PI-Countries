@@ -28,7 +28,7 @@ const continentsOrder = ({ setCurrentPage }) => {
             <div className={styles.secondPart}>
 
                 <button type="button" value='Oceania' onClick={(e) => handleContinent(e)}>Oceania</button>
-                <button type="button" value='Americas' onClick={(e) => handleContinent(e)}>Americas</button>
+                <button type="button" value='South America' onClick={(e) => handleContinent(e)}>South America</button>
                 <button type="button" value='Africa' onClick={(e) => handleContinent(e)}>Africa</button>
             </div>
         </div>

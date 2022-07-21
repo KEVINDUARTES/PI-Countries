@@ -1,62 +1,46 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail} from "../../redux/Actions";
-import {Link} from"react-router-dom";
+import {Link, useParams} from"react-router-dom";
 import './Details.css'
 
- function Details() {
+ export default function Details(props) {
     const dispatch = useDispatch()
     const details= useSelector(state=> state.details)
+    
    // const countriesDetail = useSelector((state) => state.details)
-    let {name,flag,continents,capital,SubRegion,Area,Poblacion,activities}=details[0]
+
     let {id}=useParams()
     useEffect(()=>{
-        console.log("id",id)
-        dispatch(getDetail(id))
+        // console.log("id",id)
+        dispatch(getDetail( id))
+        console.log(details)
     },[])
   
 
    
-    
-    return(
-        <div className="details">
-            <div className="detailCard" key={id}>
-            <div className="columns">
-                    <div className="columnLeft">
-                        
-                    <div className="countryInfo">
-                    <img className="detailImg" src={flag} alt={name} />                    
+    return (
+        <div >{
+            details ?
+                <div >
+                    <img src={details.flag} alt='Imagen no encontrada' width='250px' height='175px' />
+                    <h1 >{details.name}</h1>
+                    <div>
+                        <h2>Id: {details.id}</h2>
+                        <h2>Capital: {details.capital}</h2>
+                        <h2>Continente: {details.continent}</h2>
+                        <h2>Subregion: {details.subregion}</h2>
+                        <h2>Area: {details.area} km2</h2>
+                        <h2>Poblacion: {details.population}</h2>
                     </div>
-                    <div className="countryInfo">
-                        <h1>Pais:</h1>
-                        <h1 className="detailTitle">{name}</h1>                        
-                    </div>
-                    <div className="countryInfo">
-                        <h3>Capital:</h3>
-                        <h3 className="detailCapital">{capital}</h3>                      
-                    </div>
-                    <div className="countryInfo">
-                        <h3>Continente:</h3>
-                        <h3 className="detailContinent">{continents}</h3>                       
-                    </div>
-                    <div className="countryInfo">
-                        <h3>Subregion:</h3>
-                        <h3 className="detailSubregion">{SubRegion}</h3>                       
-                    </div>
-                    <div className="countryInfo">
-                        <h3>Area:</h3>
-                        <h3 className="detailArea">{Area}</h3>   
-                    </div>
-                    <div className="countryInfo">
-                        <h3>Poblacion:</h3>
-                        <h3 className="detailPopulation">{Poblacion}</h3>        
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-                    
-                        )
+                </div> :
+                <div className='loading'>
+                    <p> Loading... </p>
+                </div>
 
-   
-}
+        }
+        <Link to='/home'>VOLVER
+        </Link></div>
+
+);
+};

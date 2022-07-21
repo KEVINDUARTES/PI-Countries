@@ -1,4 +1,4 @@
-.details{
+.details {
     display: flex;
     margin-top: 0px;
     padding-top: 200px;
@@ -7,52 +7,70 @@
     justify-content: center;
     width: 100px;
     padding-left: 500px;
-    
+
 }
-.detailImg{
+
+.detailImg {
     width: 450px;
     height: 350px;
     border: 1px solid black;
     border-radius: 10px;
 }
-.detailCard{
+
+.detailCard {
     color: rgb(123, 250, 221);
     background-color: var(--contrast);
     width: 850px;
     box-shadow: 10px 10px 5px var(--shadow);
     border-radius: 10px;
 }
-.columns{
+
+.columns {
     display: flex;
 }
-.countryInfo{
+
+.countryInfo {
     display: flex;
     justify-content: space-around
 }
-.countryInfo h3{
-    width:20px;
+
+.countryInfo h3 {
+    width: 20px;
     height: 20px;
     padding-bottom: 8px;
 }
-.activitiesTitle{
+
+.activitiesTitle {
     padding-left: 50px;
 }
-.detailActivities{
+
+.detailActivities {
     display: flex;
     flex-direction: column;
     padding-left: 50px;
 }
-.HomeBT{
+
+.HomeBT {
     display: flex;
-    justify-content:flex-end;
+    justify-content: flex-end;
     margin-right: 8px;
-    margin-top: 8px;  
+    margin-top: 8px;
 }
-.Link{
+
+.Link {
     text-decoration: none;
-    display:flex;
-    justify-content:flex-end;
+    display: flex;
+    justify-content: flex-end;
     margin-right: 8px;
     margin-top: 8px;
     margin-bottom: 8px;
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+
+    color: hsl(251, 79%, 36%);
+    margin: 3px;
+
 }

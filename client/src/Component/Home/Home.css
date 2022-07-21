@@ -1,23 +1,35 @@
-.Home{
-    display:flex;
+.Home {
+    display: flex;
     flex-direction: column;
     height: inherit;
-    
+
 }
-.Filter{
+
+.Filter {
     position: flex;
     top: 100px;
     align-items: center;
     padding: 10px;
 
 }
-.Paginado{
+
+.Paginado {
     align-self: center;
-    
-    
+
+
 }
-.welcome{
+
+.welcome {
     display: flex;
     padding-left: 45%;
     text-shadow: 1px 1px 10px rgb(241, 179, 10);
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+
+    color: hsl(251, 79%, 36%);
+    margin: 3px;
+
 }
