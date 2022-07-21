@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
       const Countrydb = await Country.findAll({
         where: { name: countryId },
       });
-      newActivity.addCountries(Countrydb);//aca le agrego(me traigo de la tabla) el paies que coincidio con el nombre.
+      newActivity.addCountry(Countrydb);//aca le agrego(me traigo de la tabla) el paies que coincidio con el nombre.metodo sql (relacion muchos a muchos)
     });
     res.status(201).json({ msg: "Actividad creada correctamente" });
   } catch (e) {
