@@ -5,8 +5,8 @@ function Cards({countries}){
    // console.log(countryPG[0])
     return (
         <div className="cards">
-        
-            {countries && countries.map((countries)=>{
+            {/* me llegaron 9 paises. empieza a mapear y muestra 9 paises */}
+            {countries && countries.map((countries)=>{//este map se encarga de iterar el current country
                 return(
                     <Card
                     key={countries.id} 

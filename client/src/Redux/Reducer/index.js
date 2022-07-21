@@ -26,7 +26,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         countries: action.payload,
-        allCountries: action.payload,
+        allCountries: action.payload, //le paso lo que me trae el payload de la accion
       };
     //         //si hay una caso de GET_DETAIL, devuelve un pais con ese id;
     case GET_DETAIL:

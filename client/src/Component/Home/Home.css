@@ -2,14 +2,18 @@
     display:flex;
     flex-direction: column;
     height: inherit;
+    
 }
 .Filter{
     position: flex;
     top: 100px;
     align-items: center;
+    padding: 10px;
+
 }
 .Paginado{
     align-self: center;
+    
     
 }
 .welcome{

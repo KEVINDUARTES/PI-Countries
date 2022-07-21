@@ -1,14 +1,14 @@
 import React, { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterCountriesByActivity, getActivities } from "../../redux/Actions";
-import "./Filter.css"
+import styles from "./Filter.module.css";
 const activitiesOrder = ({ setCurrentPage }) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const dispatch = useDispatch();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const allActivities = useSelector(state => state.activities);
 
-    function handleActivity(e) {
+    function handlerActivity(e) {
         e.preventDefault();
         dispatch(filterCountriesByActivity(e.target.value));
         setCurrentPage(1);
@@ -19,20 +19,22 @@ const activitiesOrder = ({ setCurrentPage }) => {
     },[dispatch])
 
     return (
-        <div>
-            <select onChange={(e) => handleActivity(e)}>
-                <option value='All'>All Activities</option>
-                {allActivities.map((el) => {
-                    return (
-                        <option value={el.name} key={el.id}>
-                            {el.name}
-                        </option>
-                    );
+        
+        <div className={styles.actividades}>
+        <fieldset>
+            <legend>Activities</legend>
+            <input placeholder='Buscar actividades...' list='Activities' type='text' onChange={(e) => handlerActivity(e)} />
+            <datalist id='Activities'>
+                {allActivities?.map((el) => {
+                    return <option value={el.name} />
                 })}
-            </select>
-        </div>
+            </datalist>
+         
+        </fieldset>
+    </div>
+    );
 
-    )
+;
 }
 
 export default activitiesOrder;

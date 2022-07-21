@@ -26,18 +26,26 @@ router.get("/", async (req, res) => {
       res.status(200).send(countriesTotal);
     }
   } catch (e) {
-    res.status(404).send("Error ");
+    res.status(404).send("Error");
   }
 });
 
 router.get("/:id", async (req, res) => {
   const id = req.params.id; //me traigo id de params
-  const countriesTotal = await getAllCountries();
+  // const countriesTotal = await getAllCountries()
   if (id) {
-    let countryId = await countriesTotal.filter((el) => el.id == id); //dentro de todos los pñaises filtrame el de id que te pase
-    countryId.length
-      ? res.status(200).json(countryId)
+    const findID = await Country.findOne({
+      where: { id },
+      include: Activity,
+    });
+
+    findID
+      ? res.status(200).json(findID)
       : res.status(404).send("No encontre ese pais");
+    //  let countryId = await countriesTotal.filter(el => el.id ==id)//dentro de todos los pñaises filtrame el de id que te pase
+    // countryId.length?
+    // res.status(200).json(countryId) :
+    // res.status(404).send('No encontre ese pais')
   }
 });
 

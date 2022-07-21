@@ -2,7 +2,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { orderAlpha } from "../../redux/Actions/index.js";
-import "./Filter.css"
+import styles from "./Filter.module.css";
 export default function alphaOrder({setOrder}) {
     const dispatch = useDispatch();
 
@@ -17,12 +17,17 @@ export default function alphaOrder({setOrder}) {
     
 
     return (
-        <div>
+
+              <div className={styles.ordenamiento}>
+                    <fieldset>
+                    
+                        <legend>Ordenamiento</legend>
             <select onChange={(e) => handleSort(e)}>
-                <option disable>Ordenar</option>
+                <option disable >Ordenar</option>
                 <option value="A-Z"> A-Z </option>
                 <option value="Z-A"> Z-A </option>
             </select>
+            </fieldset>
         </div>
     )
 };

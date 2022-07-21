@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { orderPopulation} from "../../redux/Actions/index.js";
-import "./Filter.css"
+import styles from "./Filter.module.css";
 export default function FilterPopulation({setOrder}) {
   const dispatch = useDispatch();
 
@@ -13,12 +13,17 @@ export default function FilterPopulation({setOrder}) {
   }
 
   return (
-    <div >
+
+      
+      <div className={styles.ordenamiento}>
+   <fieldset>
+       <legend>Ordenamiento poblacional</legend>
       <select  onChange={(e) => handlePopulation(e)}>
-        <option disable>By Population</option>
+        <option disabled  selected>By Population</option>
         <option value='High'>Lower</option>
         <option value='Low'>Higher</option>
       </select>
+      </fieldset>
     </div>
   );
 }
