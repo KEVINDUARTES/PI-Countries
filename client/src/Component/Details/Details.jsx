@@ -4,7 +4,7 @@ import { getDetail} from "../../redux/Actions";
 import {Link, useParams} from"react-router-dom";
 import './Details.css'
 
- export default function Details(props) {
+ export default function Details() {
     const dispatch = useDispatch()
     const details= useSelector(state=> state.details)
     
@@ -32,8 +32,38 @@ import './Details.css'
                         <h2>Subregion: {details.subregion}</h2>
                         <h2>Area: {details.area} km2</h2>
                         <h2>Poblacion: {details.population}</h2>
+                       
+                   
+                       
+                  
                     </div>
-                </div> :
+                    {
+                        
+                        details.activities?.map(el=>{
+                            return(
+                                <div>
+                                     <h2>{el.name}</h2>
+                                <h2>{el.difficulty}</h2>
+                                <h2>{el.duration}</h2>
+                                <h2>{el.season}</h2>
+                             
+                                </div>
+                               
+                               )
+                        }
+                      
+                           
+    
+                       
+                     
+                        )}
+                    </div>
+                  
+                    
+           
+             
+               
+                :
                 <div className='loading'>
                     <p> Loading... </p>
                 </div>

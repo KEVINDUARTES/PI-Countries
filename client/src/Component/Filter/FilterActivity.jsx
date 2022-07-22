@@ -23,12 +23,14 @@ const activitiesOrder = ({ setCurrentPage }) => {
         <div className={styles.actividades}>
         <fieldset>
             <legend>Activities</legend>
-            <input placeholder='Buscar actividades...' list='Activities' type='text' onChange={(e) => handlerActivity(e)} />
-            <datalist id='Activities'>
+         
+            <select  onChange={(e) => handlerActivity(e)}>
+            <option disabled>Buscar actividades por Estacion...</option>
+                <option value="All">All</option>
                 {allActivities?.map((el) => {
-                    return <option value={el.name} />
+                    return <option value={el.season}  >{el.season}</option>
                 })}
-            </datalist>
+            </select>
          
         </fieldset>
     </div>

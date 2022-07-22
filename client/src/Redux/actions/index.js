@@ -101,7 +101,7 @@ export function orderPopulation(payload) {
 export function getActivities() {
   return async function (dispatch) {
     try {
-      let json = await axios.get("http://localhost:3001/activity");
+      let json = await axios.get("http://localhost:3001/activities");
       return dispatch({
         type: GET_ACTIVITIES,
         payload: json.data,
@@ -117,7 +117,7 @@ export function getActivities() {
 
 export function postActivities(payload) {
   return async function () {
-    const json = await axios.post("http://localhost:3001/activity", payload);
+    const json = await axios.post("http://localhost:3001/activities", payload);
     return json;
   };
 }

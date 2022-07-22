@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./card.css"
 
-function Card({id,name,flag,nombre,subregion,continents,capital,area,population,activities}){
+function Card({id,name,flag,continent}){
     return (
     <Link className="LinkD" to={`/countries/${id}`} >
         <div className="card">    
@@ -11,19 +11,19 @@ function Card({id,name,flag,nombre,subregion,continents,capital,area,population,
                 {/* <img src={image} alt="img not found" className="MapImage"/> */ }
                 <div className="infoCard">
                     <h1 className="titulo">{name}</h1>
-                    <p className="otroTitulo">{nombre}</p>
-                    <p className="continents">{continents}</p>
-                    <p className="population">{population}</p>
-                    <p className="capital">{capital}</p>
-                    <p className="subregion">{subregion}</p>
-                    <p className="area">{area}</p>
-                    <ul>
+                    {/* <p className="otroTitulo">{nombre}</p> */}
+                    <h1 className="continents">{continent}</h1>
+                    {/* <p className="population">{population}</p> */}
+                    {/* <p className="capital">{capital}</p> */}
+                    {/* <p className="subregion">{subregion}</p> */}
+                    {/* <p className="area">{area}</p> */}
+                    {/* <ul>
                     {activities?.map(activity => {
                             return(
                                 <li key={activity.id}>Actividades: {activity.nombre}</li>
                                 )
                             })}
-                    </ul>
+                    </ul> */}
                 </div>
             </div>
         </div>

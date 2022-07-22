@@ -24,7 +24,7 @@ function error(input) {
 export default function Createactivity() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const countries = useSelector((state) => state.allCountries);
+    const countriesReducer = useSelector((state) => state.allCountries);
     const [errors, setErrors] = useState({});
 
     const [input, setInput] = useState({
@@ -32,7 +32,7 @@ export default function Createactivity() {
         difficulty: "",
         duration: "",
         season: "",
-        countryId: []
+        countries: []
     })
 
     function handleChange(e) {
@@ -58,7 +58,7 @@ export default function Createactivity() {
     function handleSelect(e) {
         setInput({
             ...input,
-            countryId: [...input.countryId, e.target.value]
+            countries: [...input.countries, e.target.value]
         })
     }
     function handleSubmit(e) {
@@ -67,22 +67,24 @@ export default function Createactivity() {
             input.duration === "" ||
             input.difficulty === "" ||
             input.season === "" ||
-            input.countryId.length === 0) return alert('Debe llenar los campos');
+            input.countries.length === 0) return alert('Debe llenar los campos');
         dispatch(postActivities(input));
+        console.log("Submit actividad",input)
         alert("Actividad Creada");
+
         setInput({
             name: "",
-            duration: "",
             difficulty: "",
+            duration: "",
             season: "",
-            countryId: [],
+            countries: [],
         });
         history.push("/home");
     }
     function handleDelete(i) {
         setInput({
           ...input,
-          countryId: input.countryId.filter((el) => el !== i),
+          countries: input.countries.filter((el) => el !== i),
         });
       }
 
@@ -121,15 +123,15 @@ export default function Createactivity() {
                     </select>                {errors.season && <p className='form-error'>{errors.season}</p>}</div>
 
                 <select onChange={(e) => handleSelect(e)}>
-                    {countries?.map((country) => (
-                        <option value={input.countries}>{country.name}</option>
+                    {countriesReducer?.map((country) => (
+                        <option value={input.countriesReducer}>{country.name}</option>
                     ))}
                 </select>
 
-                {input.countryId.map(el =>
+                {input.countries.map(el =>
                 <div>
-                    <p>{el}</p>
-                    <button onClick={() => handleDelete(el)}> x </button>
+                    {/* <p>{el}</p> */}
+                    <button onClick={() => handleDelete(el)}>{el} x </button>
                 </div>
             )}
                 <div>

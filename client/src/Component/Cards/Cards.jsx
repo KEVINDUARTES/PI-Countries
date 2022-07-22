@@ -12,10 +12,10 @@ function Cards({countries}){
                     key={countries.id} 
                     id={countries.id} 
                     name={countries.name}
-                    nombre={countries.Nombre}
+                    // nombre={countries.Nombre}
                     flag={countries.flag}
-                    continent={countries.Continent}
-                    activities={countries.activities}
+                    continent={countries.continent}
+                    // activities={countries.activities}
                     />
                 )
             })}

@@ -9,7 +9,7 @@ router.use(express.json());
 
 router.post("/", async (req, res) => {
   try {
-    const { name, difficulty, duration, season, countries } = req.body;//ME TRAIGO POR BODY LO QUE NECESITO PARA CREAR
+    const { name, difficulty, duration, season, countries } = req.body; //ME TRAIGO POR BODY LO QUE NECESITO PARA CREAR
 
     const newActivity = await Activity.create({
       name: name,
@@ -17,11 +17,12 @@ router.post("/", async (req, res) => {
       duration: duration,
       season: season,
     });
+
     countries?.map(async (countryId) => {
       const Countrydb = await Country.findAll({
         where: { name: countryId },
       });
-      newActivity.addCountry(Countrydb);//aca le agrego(me traigo de la tabla) el paies que coincidio con el nombre.metodo sql (relacion muchos a muchos)
+      newActivity.addCountry(Countrydb); //aca le agrego(me traigo de la tabla) el paies que coincidio con el nombre.metodo sql (relacion muchos a muchos)
     });
     res.status(201).json({ msg: "Actividad creada correctamente" });
   } catch (e) {
@@ -36,7 +37,7 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const actividades = await Activity.findAll();
- 
+
     res.json(actividades);
   } catch (e) {
     console.log(" get error " + e);

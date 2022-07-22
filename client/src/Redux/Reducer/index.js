@@ -66,14 +66,14 @@ const rootReducer = (state = initialState, action) => {
     //         //se filtra activities y va a devolver la actividad de act que coincida con el action payload
     //         //luego devolvemos la actividad filtrada;
     case FILTER_BY_ACTIVITIES:
-      const activities = state.allCountries;
+      const allCountries2 = state.allCountries;
       const activitiesFilter =
         action.payload === "All"
-          ? activities
-          : activities.filter(
+          ? allCountries2
+          : allCountries2.filter(
               (act) =>
-                act.season &&
-                act.season.map((e) => e.name).includes(action.payload)
+                act.activities &&
+                act.activities.map((e) => e.season).includes(action.payload)
             );
       return {
         ...state,
