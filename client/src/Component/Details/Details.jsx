@@ -65,7 +65,7 @@ import './Details.css'
                
                 :
                 <div className='loading'>
-                    <p> Loading... </p>
+                    <p> No hay paises para mostrar </p>
                 </div>
 
         }

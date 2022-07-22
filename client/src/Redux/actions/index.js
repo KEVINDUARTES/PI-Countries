@@ -52,11 +52,19 @@ export function restartDetail() {
 
 export function getNameCountries(name) {
   return async function (dispatch) {
-    let json = await axios.get("http://localhost:3001/countries?name=" + name);
-    return dispatch({
-      type: SEARCH_COUNTRIES,
-      payload: json.data,
-    });
+    try {
+      let json = await axios.get(
+        "http://localhost:3001/countries?name=" + name
+      );
+      console.log(json.data);
+      return dispatch({
+        type: SEARCH_COUNTRIES,
+        payload: json.data,
+      });
+    } catch (err) {
+      console.log(err);
+      dispatch({ type: SEARCH_COUNTRIES, payload: [] });
+    }
   };
 }
 
